@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { AppHeader } from "../components/appHeader";
-import { AppUser, getCurrentUser } from "../utils/firebase/auth";
+import { AppUser, getCurrentUser } from "../utils/firebase";
 
 type RootLoaderData = {
   user: AppUser;

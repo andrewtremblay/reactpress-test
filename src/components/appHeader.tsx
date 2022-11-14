@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigation, useNavigate } from "react-router-dom";
-import { useAuthState } from "../utils/firebase/auth";
+import { useAuthState } from "../utils/firebase";
 
 export const AppHeader = () => {
   const navigation = useNavigation();

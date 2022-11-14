@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
 import { AppForm } from "../components/form";
 import { TextField } from "../components/textField";
-import { login } from "../utils/firebase/auth";
+import { login } from "../utils/firebase";
 
 interface LoginFormValues {
   email: string;

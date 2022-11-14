@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
-import { AppUser, getCurrentUser, logout } from "../utils/firebase/auth";
+import { AppUser, getCurrentUser, logout } from "../utils/firebase";
 import { startCheckout } from "../utils/stripe";
 // import { getSubscriptionProducts } from "../utils/stripe";
 
