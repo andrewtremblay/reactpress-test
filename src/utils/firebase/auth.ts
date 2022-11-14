@@ -5,12 +5,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
+  connectAuthEmulator,
 } from "firebase/auth";
 import { firebaseApp } from "./app";
 import { useAuthState as useFirebaseAuthState } from "react-firebase-hooks/auth";
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(firebaseApp);
+if (location.hostname === "localhost") {
+  connectAuthEmulator(auth, "http://localhost:9099");
+}
 
 export type AppUser = User | undefined | null;
 

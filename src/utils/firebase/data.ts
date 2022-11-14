@@ -4,9 +4,14 @@ import {
   collection,
   getDocs,
   DocumentData,
+  connectFirestoreEmulator,
 } from "firebase/firestore/lite";
 
 const db = getFirestore(firebaseApp);
+
+if (location.hostname === "localhost") {
+  connectFirestoreEmulator(db, "localhost", 9000);
+}
 
 // Get the current user from the database
 async function getUserList(): Promise<DocumentData[]> {
