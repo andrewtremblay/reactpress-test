@@ -3,26 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
 import { AppForm } from "../components/form";
 import { TextField } from "../components/textField";
-import { register } from "../utils/firebase/auth";
+import { login } from "../utils/firebase/auth";
 
-interface RegistrationFormValues {
+interface LoginFormValues {
   email: string;
+  password: string;
 }
 
-const Register = () => {
-  const initialValues: RegistrationFormValues = { email: "" };
+const Login = () => {
+  const initialValues: LoginFormValues = { email: "", password: "" };
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+
   return (
     <div>
-      <p>Registration Page</p>
+      <p>Login Page</p>
       <AppForm
         initialValues={initialValues}
         onSubmit={async (values, actions) => {
           console.log({ values, actions });
           setLoading(true);
           try {
-            await register(values.email, values.password);
+            await login(values.email, values.password);
             navigate("/profile");
           } catch (e) {
             console.error(e);
@@ -42,6 +44,6 @@ const Register = () => {
   );
 };
 
-export const registerLoader = () => "done";
+export const loginLoader = () => "done";
 
-export default Register;
+export default Login;

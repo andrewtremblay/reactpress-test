@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
-const Register = () => <div className="App">
-      <div>
-        <p>Home Page</p>
-      </div>
+const Home = () => (
+  <div className="App">
+    <div>
+      <p>Home Page</p>
     </div>
+  </div>
+);
 
-export const registerLoader = () => 'done'; 
+export const homeLoader = () => "done";
 
-
-export default Register;
+export default Home;

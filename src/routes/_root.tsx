@@ -1,17 +1,26 @@
-import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { AppHeader } from "../components/appHeader";
+import { AppUser, getCurrentUser } from "../utils/firebase/auth";
 
-const Root = () => <div className="App">
-      <header className='App-header'>
-        <Link className='App-link' to="/">Home</Link>
-        <Link className='App-link' to="/register">Register</Link>
-      </header>
-      <div className='App-page'>
-      <Outlet />
+type RootLoaderData = {
+  user: AppUser;
+};
+
+const Root = () => {
+  return (
+    <div className="App">
+      <AppHeader />
+      <div className="App-page">
+        <Outlet />
       </div>
     </div>
+  );
+};
 
-
-export const rootLoader = () => 'done'; 
+export const rootLoader = async (): Promise<RootLoaderData> => {
+  const user = await getCurrentUser();
+  return { user };
+};
 
 export default Root;
