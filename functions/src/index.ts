@@ -23,8 +23,10 @@ admin.initializeApp();
 //    projectId: process.env.GCLOUD_PROJECT,
 //  });
 
-const { Stripe } = require("stripe");
-const stripe = new Stripe(functions.config()?.stripe?.key);
+import { Stripe } from "stripe";
+const stripe = new Stripe(functions.config()?.stripe?.key, {
+  apiVersion: "2022-08-01",
+});
 
 /**
  * When a user is created, create a Stripe customer object for them.
