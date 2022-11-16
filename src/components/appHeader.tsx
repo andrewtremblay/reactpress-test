@@ -26,7 +26,7 @@ export const AppHeader = () => {
       {user ? (
         <>
           <Link className="App-link" to="/profile">
-            {user.email}
+            {user?.email}
           </Link>
         </>
       ) : (

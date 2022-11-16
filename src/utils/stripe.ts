@@ -1,10 +1,10 @@
+import { firebaseApp, getCurrentUser } from "./firebase";
 import {
   createCheckoutSession,
   getProducts,
   getStripePayments,
 } from "@stripe/firestore-stripe-payments";
 import { loadStripe } from "@stripe/stripe-js";
-import { firebaseApp, getCurrentUser } from "./firebase";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.

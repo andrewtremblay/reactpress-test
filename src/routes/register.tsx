@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { register } from "../utils/firebase";
 import { Button } from "../components/button";
 import { AppForm } from "../components/form";
 import { TextField } from "../components/textField";
-import { register } from "../utils/firebase";
 
 interface RegistrationFormValues {
   email: string;

@@ -1,14 +1,13 @@
-import { FirebaseOptions, initializeApp } from "firebase/app";
+import { initializeApp, FirebaseOptions } from "@firebase/app";
+import { getFirestore } from "@firebase/firestore";
 import {
-  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  User,
-  connectAuthEmulator,
-} from "firebase/auth";
-import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+} from "@firebase/auth";
+import type { User } from "@firebase/auth";
 import { useAuthState as useFirebaseAuthState } from "react-firebase-hooks/auth";
 
 // Your web app's Firebase configuration
@@ -24,16 +23,18 @@ const firebaseConfig: FirebaseOptions = {
 };
 
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig);
-export const db = getFirestore(firebaseApp);
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore();
 if (location.hostname === "localhost") {
-  connectFirestoreEmulator(db, "localhost", 9000);
+  //   connectFirestoreEmulator(db, "localhost", 9000);
 }
 
-export const auth = getAuth(firebaseApp);
+const auth = getAuth();
 if (location.hostname === "localhost") {
-  connectAuthEmulator(auth, "http://localhost:9099");
+  //   connectAuthEmulator(auth, "http://localhost:9099");
 }
+
+export { firebaseApp, db, auth };
 
 export type AppUser = User | undefined | null;
 
@@ -86,4 +87,5 @@ export async function logout(): Promise<boolean> {
   return true;
 }
 
-export const useAuthState = () => useFirebaseAuthState(auth);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useAuthState = () => useFirebaseAuthState(auth as any);
