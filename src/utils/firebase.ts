@@ -1,11 +1,12 @@
 import { initializeApp, FirebaseOptions } from "@firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "@firebase/firestore";
 import {
   getAuth,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  connectAuthEmulator,
 } from "@firebase/auth";
 import type { User } from "@firebase/auth";
 import { useAuthState as useFirebaseAuthState } from "react-firebase-hooks/auth";
@@ -26,12 +27,12 @@ const firebaseConfig: FirebaseOptions = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore();
 if (location.hostname === "localhost") {
-  //   connectFirestoreEmulator(db, "localhost", 9000);
+  connectFirestoreEmulator(db, "localhost", 9000);
 }
 
 const auth = getAuth();
 if (location.hostname === "localhost") {
-  //   connectAuthEmulator(auth, "http://localhost:9099");
+  connectAuthEmulator(auth, "http://localhost:9099");
 }
 
 export { firebaseApp, db, auth };
