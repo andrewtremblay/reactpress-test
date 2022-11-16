@@ -10,28 +10,28 @@ import Profile, { profileLoader } from "./routes/profile";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/blog/reactpress-test/",
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
         loader: homeLoader,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
         loader: registerLoader,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
         loader: loginLoader,
       },
       {
-        path: "/profile",
+        path: "profile",
         element: <Profile />,
         loader: profileLoader,
       },
